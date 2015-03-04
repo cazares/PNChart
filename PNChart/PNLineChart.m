@@ -69,19 +69,34 @@
 #warning modify origin
     if (yStep == 0.0) {
         PNChartLabel *minLabel = [[PNChartLabel alloc] initWithFrame:CGRectMake(0.0, (NSInteger)_chartCavanHeight, (NSInteger)_chartMargin, (NSInteger)_yLabelHeight)];
-        minLabel.text = [NSString stringWithFormat:yLabelFormat, 0.0];
+        if (self.yLabelFormatter) {
+            minLabel.text = [self.yLabelFormatter stringFromNumber:@(0.0)];
+        }
+        else {
+            minLabel.text = [NSString stringWithFormat:yLabelFormat, 0.0];
+        }
         [self setCustomStyleForYLabel:minLabel];
         [self addSubview:minLabel];
         [_yChartLabels addObject:minLabel];
 
         PNChartLabel *midLabel = [[PNChartLabel alloc] initWithFrame:CGRectMake(0.0, (NSInteger)(_chartCavanHeight / 2), (NSInteger)_chartMargin, (NSInteger)_yLabelHeight)];
-        midLabel.text = [NSString stringWithFormat:yLabelFormat, _yValueMax];
+        if (self.yLabelFormatter) {
+            midLabel.text = [self.yLabelFormatter stringFromNumber:@(_yValueMax)];
+        }
+        else {
+            midLabel.text = [NSString stringWithFormat:yLabelFormat, _yValueMax];
+        }
         [self setCustomStyleForYLabel:midLabel];
         [self addSubview:midLabel];
         [_yChartLabels addObject:midLabel];
 
         PNChartLabel *maxLabel = [[PNChartLabel alloc] initWithFrame:CGRectMake(0.0, 0.0, (NSInteger)_chartMargin, (NSInteger)_yLabelHeight)];
-        maxLabel.text = [NSString stringWithFormat:yLabelFormat, _yValueMax * 2];
+        if (self.yLabelFormatter) {
+            maxLabel.text = [self.yLabelFormatter stringFromNumber:@(_yValueMax * 2)];
+        }
+        else {
+            maxLabel.text = [NSString stringWithFormat:yLabelFormat, _yValueMax * 2];
+        }
         [self setCustomStyleForYLabel:maxLabel];
         [self addSubview:maxLabel];
         [_yChartLabels addObject:maxLabel];
@@ -94,7 +109,12 @@
         {
             PNChartLabel *label = [[PNChartLabel alloc] initWithFrame:CGRectMake(0.0, (NSInteger)(_chartCavanHeight - index * yStepHeight), (NSInteger)_chartMargin, (NSInteger)_yLabelHeight)];
             [label setTextAlignment:NSTextAlignmentRight];
-            label.text = [NSString stringWithFormat:yLabelFormat, _yValueMin + (yStep * index)];
+            if (self.yLabelFormatter) {
+                label.text = [self.yLabelFormatter stringFromNumber:@(_yValueMin + (yStep * index))];
+            }
+            else {
+                label.text = [NSString stringWithFormat:yLabelFormat, _yValueMin + (yStep * index)];
+            }
             [self setCustomStyleForYLabel:label];
             [self addSubview:label];
             [_yChartLabels addObject:label];

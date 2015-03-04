@@ -62,6 +62,7 @@
  * String formatter for float values in y-axis labels. If not set, defaults to @"%1.f"
  */
 @property (nonatomic, strong) NSString *yLabelFormat;
+@property (nonatomic, strong) NSNumberFormatter *yLabelFormatter;
 
 - (void)setXLabels:(NSArray *)xLabels withWidth:(CGFloat)width;
 

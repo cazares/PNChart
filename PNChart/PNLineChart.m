@@ -66,7 +66,6 @@
         _yChartLabels = [NSMutableArray new];
     }
 
-#warning modify origin
     if (yStep == 0.0) {
         PNChartLabel *minLabel = [[PNChartLabel alloc] initWithFrame:CGRectMake(0.0, (NSInteger)_chartCavanHeight, (NSInteger)_chartMargin, (NSInteger)_yLabelHeight)];
         if (self.yLabelFormatter) {
@@ -169,7 +168,6 @@
         for (int index = 0; index < xLabels.count; index++) {
             labelText = xLabels[index];
 
-#warning modify origin
             NSInteger x = 2 * _chartMargin +  (index * _xLabelWidth) - (_xLabelWidth / 2);
             NSInteger y = _chartMargin + _chartCavanHeight;
 
@@ -375,7 +373,6 @@
             
             CGFloat offSetX = (_chartCavanWidth) / (chartData.itemCount);
             
-#warning modify chart path
             int x = 2 * _chartMargin +  (i * offSetX);
             int y = _chartCavanHeight - (innerGrade * _chartCavanHeight) + (_yLabelHeight / 2);
             
@@ -624,7 +621,6 @@
 - (void)drawRect:(CGRect)rect
 {
     if (self.isShowCoordinateAxis) {
-#warning modify
         CGFloat yAxisOffset = 10.f;
 
         CGContextRef ctx = UIGraphicsGetCurrentContext();

@@ -52,6 +52,7 @@
  * Controls whether to show the coordinate axis. Default is NO.
  */
 @property (nonatomic, getter = isShowCoordinateAxis) BOOL showCoordinateAxis;
+@property (nonatomic) BOOL drawCoordinateAxisArrow;
 @property (nonatomic) UIColor *axisColor;
 @property (nonatomic) CGFloat axisWidth;
 
